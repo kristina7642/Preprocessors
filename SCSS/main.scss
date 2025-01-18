@@ -1,0 +1,99 @@
+// Переменные для цветов и отступов
+$header-bg: #000000;
+$gallery-bg: #ffffff;
+$item-spacing: 20px;
+*{
+  margin: 0; 
+}
+// Стили для header
+.header {
+  background-color: $header-bg;
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+h1{
+  font-family: 'Lato', sans-serif;
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 20px;
+  background-image: linear-gradient(to right, #fff 45%, #000000); /* Светлый градиент */
+  background-clip: text;
+  color: transparent;
+}
+
+// Стили для галереи
+.gallery {
+  padding: $item-spacing;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 6vw;
+  background-color: $header-bg;
+ border-radius: 20px;
+  // Стили для элементов галереи
+  .gallery-item {
+    width: calc((100% - 1 * $item-spacing) / 6); // Расчет ширины для 5 картинок в ряду
+    margin: $item-spacing / 2; // Половина отступа сверху и снизу, и по бокам
+    box-sizing: border-box; // Включает padding и margin в ширину элемента
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block; // Убирает нижний отступ от картинки
+      transition: opacity 0.3s ease; // Плавное изменение прозрачности
+
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+
+  // Медиавыражения
+  
+  @media (max-width: 991px) {
+    .gallery-item {
+      width: calc((100% - 3 * $item-spacing) / 3); // 3 картинки в ряду
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-item {
+      width: calc((90% - $item-spacing) / 2); // 2 картинки в ряду
+    }
+  
+      margin: 20px auto; 
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+
+  @media (max-width: 539px) {
+    .gallery-item {
+      width: 100%; // 1 картинка в ряду
+    }
+  }
+
+  @media (min-width: 992px) {
+    max-width: 970px;
+    margin: 20px auto; // Центрирование по горизонтали для больших экранов
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    max-width: 750px;
+    margin: 20px auto; // Центрирование по горизонтали для планшетов
+    padding: 10px;
+  }
+}
+@each $index in 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 {
+  .gallery-item#{$index} {
+    background-image: url("../media/#{$index}.webp"); //Для каждого элемента (#{$index}) он устанавливает фоновое изображение из файла ../media/#{$index}.webp.
+    background-repeat: no-repeat; //Устанавливает фоновое изображение без повторения и с размером, заполняющим весь элемент
+    background-size: 100% 100%;
+    margin: 20px 10px;
+    box-shadow: 4px 4px 6px 1px rgba(163, 164, 165, 0.2);
+  }
+  img{
+    border-radius: 20px;
+  }
+}
